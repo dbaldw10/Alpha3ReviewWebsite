@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha 3 Reviews</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/css/console.css" />
+
+    <!-- fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+
+</head>
+
+<!-- nav bar -->
+
+<body>
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="/consoles">All Consoles</a>
+    <div class="dropdown">
+        <button class="dropbtn">Manufacturer
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/manufacturer/20">Sony</a>
+            <a href="/manufacturer/19">Microsoft</a>
+            <a href="/manufacturer/21">Nintendo</a>
+            <a href="/manufacturer/22">Sega</a>
+        </div>
+    </div>
+    <a href="/hashtags">Hashtags</a>
+</div>
+
+<!-- header -->
+
+<header>
+    <div class="image-container">
+        <h1 class="header-title"><strong>Alpha Three</strong><strong></strong></h1>
+        <p class="header-subtitle"><strong>"Your #1 Console Review Source"</strong></p>
+        <img src="../Images/A3.png" class="logo">
+    </div>
+</header>
+
+<!-- Main page area -->
+<div class = "hashtagSection">
+    <div class = top>
+        <section class = "hashtagbodyDisplay">
+            <div class="container" th:each = "console: ${inHashtag.consoles}">
+                <p class = "reviewName" th:text= "${console.getHashtags}"></p>
+            </div>
+        </section>
+    </div>
+
+        </section>
+
+</div>
+    </div>
+</div>
+
+<!-- footer -->
+
+<footer class="footer" id="contact">
+    <p>Please feel free to never contact us. Thank You.</p>
+    <a href="" class="footer__link">dontsend@email.com</a>
+</footer>
+</div>
+</body>
+</html>

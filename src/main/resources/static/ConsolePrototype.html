@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplha 3 Reviews</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/src/main/resources/css/system.css">
+
+    <!-- fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+
+</head>
+
+<!-- nav bar -->
+
+<body>
+    <div class="navbar">
+        <a href="../static/indexPrototype.html">Home</a>
+        <a href="../static/AllSystems.html">All Consoles</a>
+        <div class="dropdown">
+            <button class="dropbtn">Manufacturer
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/manufacturer/20">Sony</a>
+                <a href="/manufacturer/19">Microsoft</a>
+                <a href="/manufacturer/21">Nintendo</a>
+                <a href="/manufacturer/22">Sega</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Rating
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">⭐⭐⭐⭐⭐</a>
+                <a href="#">⭐⭐⭐⭐</a>
+                <a href="#">⭐⭐⭐</a>
+                <a href="#">⭐⭐</a>
+                <a href="#">⭐</a>
+            </div>
+        </div>
+        <a href="#contact">Contact Us</a>
+    </div>
+
+    <!-- header -->
+
+    <header>
+        <div class="image-container">
+            <h1 class="header-title"><strong>Alpha Three</strong><strong></strong></h1>
+            <p class="header-subtitle"><strong>"Your #1 Console Review Source"<strong></p>
+            <img src="../Images/A3.png" class="logo">
+        </div>
+    </header>
+
+    <!-- Main page area -->
+    <div class = "reviewSection">
+        <div class = top>
+            <section class = "nameImage">
+                <h1 th:text="${inConsole.name}">System Name</h1>
+                <img class = "system_image" src="../Images/SNES.png">
+            </section>
+        </div>
+
+        <section class = "description">
+            <p class = "systemDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid laborum unde necessitatibus, dolorem, magnam suscipit sapiente quo eligendi voluptatem, eum neque eaque at enim? Iure deleniti, dicta dolor in animi placeat nisi vero, eaque alias nam voluptatum consequuntur soluta neque odio! Est, maiores! Consectetur nemo ab suscipit natus possimus itaque?</p>
+        </section>
+
+        <div class = "bottom">
+            <section class = "systemDetails">
+                <p th:text="${inConsole.releaseDate}">System release date</p>
+                <p th:text="${inConsole.manufacturer}">System manufacturer</p>
+                <p th:text="${inConsole.type}">Handheld or Console</p>
+                <p th:text="${inConsole.rating}">Rating</p>
+                <p th:text="${inConsole.description}">Description</p>
+                <p th:text="${inConsole.hashtags}">Hashtags</p>
+                <p th:text="${inConsoles.reviews}">reviews</p>
+            </section>
+
+            <section class = "ratingSection">
+                <div class = "starSection">
+                    <h2>Rating</h2>
+                    <ul class="rate-area">
+                        <input type="radio" id="5-star" name="crating" value="5">
+                            <label for="5-star" title="Amazing">5 stars</label>
+                        <input type="radio" id="4-star" name="crating" value="4">
+                            <label for="4-star" title="Good">4 stars</label>
+                        <input type="radio" id="3-star" name="crating" value="3">
+                            <label for="3-star" title="Average">3 stars</label>
+                        <input type="radio" id="2-star" name="crating" value="2">
+                            <label for="2-star" title="Not Good">2 stars</label>
+                        <input type="radio" id="1-star" required="" name="crating" value="1" aria-required="true">
+                            <label for="1-star" title="Bad">1 star</label>
+                    </ul>
+                </div>
+
+                <form class = "formContainer">
+                    <label for="review">
+                        <h2>Review</h2>
+                    </label>
+                    <textarea id="review" name="review" placeholder="Leave a review..." style="height:200px"></textarea>
+                    <input type="submit">
+                </form>
+
+            </section>
+        </div>
+    </div>
+
+ <!-- footer -->
+
+    <footer class="footer" id="contact">
+        <p>Please feel free to never contact us. Thank You.</p>
+        <a href="" class="footer__link">dontsend@email.com</a>
+    </footer>
+
+</body>
+</html>

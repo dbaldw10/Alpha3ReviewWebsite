@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha 3 Reviews</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/css/console.css" />
+
+    <!-- fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+
+</head>
+
+<!-- nav bar -->
+
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/consoles">All Consoles</a>
+        <div class="dropdown">
+            <button class="dropbtn">Manufacturer
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/manufacturer/20">Sony</a>
+                <a href="/manufacturer/19">Microsoft</a>
+                <a href="/manufacturer/21">Nintendo</a>
+                <a href="/manufacturer/22">Sega</a>
+            </div>
+        </div>
+        <a href="/hashtags">Hashtags</a>
+    </div>
+
+    <!-- header -->
+
+    <header>
+        <div class="image-container">
+            <h1 class="header-title"><strong>Alpha Three</strong><strong></strong></h1>
+            <p class="header-subtitle"><strong>"Your #1 Console Review Source"</strong></p>
+            <img src="../Images/A3.png" class="logo">
+        </div>
+    </header>
+
+    <!-- Main page area -->
+    <div class = "reviewSection">
+        <div class = top>
+            <section class = "nameImage">
+                <h1 th:text="${inConsole.name}">System Name</h1>
+                <img th:src="${inConsole.imgUrl}" class ="system_image">
+            </section>
+        </div>
+        <section class = "description">
+            <p th:text="${inConsole.description}">Description</p>
+        </section>
+
+        <div class = "bottom">
+            <section class = "systemDetails">
+                <h2>Release Date:</h2>
+                <p th:text="${inConsole.releaseDate}"></p>
+                <h2>Manufacturer:</h2>
+                <p th:text="${inConsole.manufacturer}"></p>
+                <h2>Portability:</h2>
+                <p th:text="${inConsole.type}"></p>
+                <h2>Tags:</h2>
+                <div class="hashContainer" th:each = "hashtag: ${inConsole.hashtags}">
+                    <a th:text= "${hashtag.getHashtagbody}" th:href="'/hashtag/'+${hashtag.id}">Hashtags</a>
+                </div>
+            </section>
+
+
+            <div class = "ratingSection">
+                <section>
+                    <form class = "formContainer" action="review" th:action="'/console/' + ${inConsole.id}" method="POST">
+                        <h2>Submit Review</h2>
+                        <input class = "inputBorder" type="text" id="name" name="name" placeholder = "Your name" maxlength="30" size = "30"><br><br>
+                        <textarea class = "inputBorder" id="review" name="review" placeholder="Leave a review..." style="height:200px" maxlength="255" size = "300"></textarea>
+                        <input class = "submitBorder" value="Submit Review" type="submit">
+                    </form>
+                </section>
+
+                <section>
+                    <form class = "formContainer2" action= "hashtag"  th:action="'/console/' + ${inConsole.id}"  method="POST">
+                        <h2>Submit #Hashtag</h2>
+                        <textarea class = "inputBorder" id="hashtag" name="hashtag" placeholder="Leave a #hashtag..." maxlength = "30" size = "50"></textarea>
+                        <input class = "submitBorder" value="Submit Hashtag" type="submit">
+                    </form>
+                </section>
+            </div>
+        </div>
+
+        <div class = "submittedReviews">
+            <h2>Submitted Reviews</h2>
+            <div class="container" th:each = "review: ${inConsole.reviews}">
+                <p class = "reviewName" th:text= "${review.getName} + ' says:'"></p>
+                <p class = "reviewText" th:text= "${review.getReviewbody}"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+
+    <div id="wrapper">
+        <h1> </h1>
+    </div>
+    <footer>
+        <div class="footer" id="contact">
+            <a href="" class="footer__link">dontsend@email.com</a>
+            <p class = "copyright">Copyright &#169 2022 Alpha Three (3). All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
